@@ -1,5 +1,3 @@
-# Book-Inventory-Management-System
-Book Inventory 
 class Book:
     def __init__(self, titles, authors):
         self.titles = titles  
@@ -54,8 +52,17 @@ class BookInventory:
         else:
             print(f"Book at index {index} not found in the inventory.")
 
-class AuthSystem:
+    def view_inventory(self):
+        current = self.head
+        index = 1
+        while current:
+            print(f"Book {index}:")
+            print(f"  Titles: {', '.join(current.titles)}")
+            print(f"  Authors: {', '.join(current.authors)}")
+            current = current.next_book
+            index += 1
 
+class AuthSystem:
     def __init__(self):
         self.users = {}
 
@@ -100,6 +107,7 @@ def main():
         print("\nWelcome to the Book Inventory Management System")
         print("\n1. Register")
         print("2. Login")
+        print("3. Exit")
         choice = input("\nEnter your choice: ")
         if choice == '1':
             auth.register()
@@ -110,7 +118,8 @@ def main():
                     print("1. Add a book")
                     print("2. Remove a book")
                     print("3. Replace a book")
-                    print("4. Logout")
+                    print("4. View book inventory")
+                    print("5. Logout")
                     choice = input("\nEnter your choice: ")
 
                     if choice == '1':
@@ -142,6 +151,9 @@ def main():
                         inventory.replace_book(index, new_titles, new_authors)
 
                     elif choice == '4':
+                        inventory.view_inventory()
+
+                    elif choice == '5':
                         print("Logging out.")
                         break
 
@@ -149,6 +161,9 @@ def main():
                         print("Invalid choice. Please try again.")
             else:
                 print("Login failed. Please try again.")
+        elif choice == '3':
+            print("Exiting the program. Goodbye!")
+            break
         else:
             print("Invalid choice. Please try again.")
 
