@@ -84,7 +84,7 @@ class AuthSystem:
                 print("Login successful!")
                 return True
             else:
-                print("Authentication failed. Please try again.")
+                print("Wrong Password. Please try again.")
                 continue
                 
 def main():
